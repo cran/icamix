@@ -12,8 +12,8 @@ The icamix package provides R functions as well as a C++ library which facilitat
 \tabular{ll}{
 Package: \tab icamix\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2014-06-30\cr
+Version: \tab 1.0.1\cr
+Date: \tab 2014-08-28\cr
 License: \tab GPL-2 | GPL-3\cr
 }
 We have developed the NSMM-ICA algorithm which is implemented in the main function EMFASTICAALG that currently integrates npEM and Fast-ICA for non-parametric estimation of ICA mixture models.

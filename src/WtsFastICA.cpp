@@ -70,11 +70,19 @@ List WtsFastICA(
 
 	if(r != Wconst.n_rows || r != Wconst.n_cols)
 	{
-		std::srand(19811128);
-		W = mat(r, r, fill::randn); // generate W's initial value
+		GetRNGstate();
+		W = mat(r, r, fill::zeros); // generate W's initial value
+		for(unsigned int i = 0; i < r; i++)
+		{
+			for(unsigned int j = 0; j < r; j++)
+			{
+				W(i, j) = unif_rand()+0.1*i*i;
+			}
+		}
+		PutRNGstate();
 		svd_econ(U_W, s_W, V_W, W, "both", "dc");
 		W = U_W * V_W.t();
-    //W = eye<mat>(r, r);
+		//W = eye<mat>(r, r);
 		Wprevious = W;
 	}
 	else

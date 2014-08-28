@@ -20,65 +20,6 @@ using namespace arma;
 #define InvSqr2pi             0.39894228040143267794
 
 
-//// Get current date/time, format is YYYY-MM-DD.HH:mm:ss
-//const std::string currentDateTime() {
-//	time_t     now = time(0);
-//	struct tm  tstruct;
-//	char       buf[80];
-//	tstruct = *localtime(&now);
-//	// Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
-//	// for more information about date/time format
-//	strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
-//
-//	return buf;
-//}
-
-void KDEest(const std::vector<arma::mat>& data, const arma::mat& prob, double h, arma::mat& answerGrid, arma::mat& icabandwidth)
-{
-	// A function that calculates kernel density estimates
-	int nCluster = answerGrid.n_rows;
-	int n = answerGrid.n_cols;
-	int r = data[1].n_rows;
-
-	for(int i = 0; i < nCluster; i++)
-	{
-		double tempsum = sum(prob.col(i));
-		double temph;
-		if(h == 0){
-			temph = 0.5 / std::pow(tempsum, 0.2);
-		} else {
-			temph = h;
-		}
-
-		icabandwidth(i,0) = temph;
-
-		//Rcpp::Rcout << "n = " << n << endl;
-		//Rcpp::Rcout << "tempsum = " << tempsum << endl;
-		//Rcpp::Rcout << "temph = " << temph << endl;
-
-		for(int j = 0; j < r; j++)
-		{
-			rowvec tempVec(n, fill::zeros);
-			for(int pj = 0; pj < n; pj++)
-			{
-				for(int dj = pj; dj < n; dj ++)
-				{
-					double temp = 1/temph * InvSqr2pi * std::exp(-0.5*std::pow((data[i](j,pj)-data[i](j,dj))/temph, 2));
-					tempVec(pj) += temp * prob(dj,i);
-					if(dj != pj)
-					{
-						tempVec(dj) += temp * prob(pj,i);
-					}
-				}
-				answerGrid(i,pj) *= tempVec(pj)/tempsum;
-			}
-
-			//cout<< "stop " << i << "," << j << currentDateTime() << endl;
-		}
-
-	}
-
-}
 
 List WtsFastICA(const arma::mat& X, const arma::vec& wts, const arma::mat& Wconst, bool verbose = true, double alpha = 1, int maxIteration = 60, double tolerance = 1e-6);
 
@@ -183,7 +124,46 @@ List EMInterwovenFastICA(
 
 		// 3) Density estimation step
 
-		KDEest(OriginalSignals, MembershipProbs, bandWidth, ProductDensity, ICABandWidth);
+		//KDEest(OriginalSignals, MembershipProbs, bandWidth, ProductDensity, ICABandWidth);
+		{
+			// calculates kernel density estimates
+			int nCluster = ProductDensity.n_rows;
+			double tempsum, temph, temp;
+			rowvec tempVec(n, fill::zeros);
+
+			for(int i = 0; i < nCluster; i++)
+			{
+				tempsum = sum(MembershipProbs.col(i));
+				if(bandWidth == 0){
+					temph = 0.5 / std::pow(tempsum, 0.2);
+				} else {
+					temph = bandWidth;
+				}
+
+				ICABandWidth(i,0) = temph;
+
+				for(int j = 0; j < r; j++)
+				{
+					tempVec.zeros();
+					for(int pj = 0; pj < n; pj++)
+					{
+						for(int dj = pj; dj < n; dj ++)
+						{
+							temp = 1/temph * InvSqr2pi * std::exp(-0.5*std::pow((OriginalSignals[i](j,pj)-OriginalSignals[i](j,dj))/temph, 2));
+							tempVec(pj) += temp * MembershipProbs(dj,i);
+							if(dj != pj)
+							{
+								tempVec(dj) += temp * MembershipProbs(pj,i);
+							}
+						}
+						ProductDensity(i,pj) *= tempVec(pj)/tempsum;
+					}
+
+				}
+
+			}
+
+		}
 
 		for (int i = 0; i < nCluster; i++)
 		{

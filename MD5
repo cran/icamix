@@ -1,4 +1,4 @@
-fddf9877f20f64293b4483564f282c2a *DESCRIPTION
+362c2bb5095c08183ad1e1de7a19d13b *DESCRIPTION
 ca88a20f9aa62409ad2d16c321061302 *NAMESPACE
 c0851ab6e87908bfd9a39df456b7afe6 *R/EMFASTICAALG.R
 50b3d4f71c1235323f30a9899158112f *R/RcppExports.R
@@ -7,15 +7,15 @@ f075e82856e77ac1b32882a2b2476f93 *man/CLASSDIFFRATE.Rd
 cc70022eea93d582d37b904be8c4b364 *man/EMFASTICAALG.Rd
 33f4572befd67dab20cd8720da437a72 *man/ESTIMATEDMEMBER.Rd
 5b88934ad3f78100b3fd2fe114a3284d *man/icamix-internal.Rd
-37d48bfbb9a2a9a36c05f24971e3925e *man/icamix-package.Rd
+19872a7a19a2afff653879048a4c0b00 *man/icamix-package.Rd
 886a4704498bcecbed910fdf92af86b8 *man/plot.EMFASTICAALG.Rd
 f16e57be9dbb7311d643383df64b4493 *man/plot.summary.EMFASTICAALG.Rd
 28eedbf33f8c223ab4d94c9e23f681bf *man/print.EMFASTICAALG.Rd
 f86c8e72e68a5c3ffede86824734b452 *man/print.summary.EMFASTICAALG.Rd
 3f493a1853854967ec1f6d495ab3635d *man/summary.EMFASTICAALG.Rd
-2a803fb9342ea1916bb2a3aff32535fc *src/EMInterwovenFastICA.cpp
+8bae5ff3d485aaa59fdb81a471301774 *src/EMInterwovenFastICA.cpp
 2a6f9e9e044a78154d3cfda5936d6f48 *src/Makevars
 8d46d69896a1f1d31ed76035a0e49d67 *src/Makevars.win
 e60dc7f18efa5dc649fcccb2b49d463e *src/RcppExports.cpp
-996dab4278ae4f6fccb09717f7847b27 *src/WtsFastICA.cpp
+90cbc08aae681976cc551ca84efe608d *src/WtsFastICA.cpp
 debd2f94f2b74b1da399634590d07eac *src/WtsKde.cpp
