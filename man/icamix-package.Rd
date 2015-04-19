@@ -24,7 +24,7 @@ Xiaotian Zhu, David R. Hunter
 Maintainer: Xiaotian Zhu <xxz131@psu.edu>
 }
 \references{
-\href{http://sites.stat.psu.edu/~xxz131/XTZ_Dissertation.pdf}{http://sites.stat.psu.edu/~xxz131/XTZ_Dissertation.pdf}
+\href{https://drive.google.com/file/d/0B22b0mmFLnt3YWlLMFpGRi1WVDA/view?usp=sharing}{https://drive.google.com/file/d/0B22b0mmFLnt3YWlLMFpGRi1WVDA/view?usp=sharing}
 }
 %~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
 %~~ the R documentation directory ~~

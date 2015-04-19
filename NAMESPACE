@@ -1,3 +1,8 @@
 useDynLib(icamix)
 importFrom(Rcpp, evalCpp)
 exportPattern("^[[:alpha:]]+")
+S3method(plot, EMFASTICAALG)
+S3method(summary, EMFASTICAALG)
+S3method(print, summary.EMFASTICAALG)
+S3method(print, EMFASTICAALG)
+S3method(plot, summary.EMFASTICAALG)
