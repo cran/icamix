@@ -52,8 +52,7 @@ An integer vector of length two specifying the coordinates with respect to which
 %}
 \examples{
 ## An Example that runs the NSMM-ICA algorithm on Cohen's tone data
-library(mixtools)
-data(tonedata)
+data(tonedata, package="mixtools")
 
 b <- EMFASTICAALG(tonedata, 2, h=0, tol=1e-8)
 plot(b)

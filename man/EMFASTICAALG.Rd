@@ -83,11 +83,8 @@ The returned value is an \code{EMFASTICAALG} object which consists of a list of 
 %}
 \examples{
 ## An Example that runs the NSMM-ICA algorithm on Cohen's tone data
-library(mixtools)
-data(tonedata)
-
-b <- EMFASTICAALG(tonedata, 2, h=0, tol=1e-8)
-  
+data(tonedata, package="mixtools")
+b <- EMFASTICAALG(tonedata, 2, h=0, tol=1e-8)  
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

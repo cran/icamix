@@ -1,5 +1,7 @@
 useDynLib(icamix)
 importFrom(Rcpp, evalCpp)
+importFrom("graphics", "par", "plot")
+importFrom("stats", "kmeans", "plot.ts")
 exportPattern("^[[:alpha:]]+")
 S3method(plot, EMFASTICAALG)
 S3method(summary, EMFASTICAALG)

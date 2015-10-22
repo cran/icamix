@@ -43,8 +43,7 @@ ESTIMATEDMEMBER(rstICAMIX)
 %}
 \examples{
 ## An Example that runs the NSMM-ICA algorithm on Cohen's tone data
-library(mixtools)
-data(tonedata)
+data(tonedata, package="mixtools")
 
 b <- EMFASTICAALG(tonedata, 2, h=0, tol=1e-8)
 estimatedgroup <- ESTIMATEDMEMBER(b) # estimated species info
